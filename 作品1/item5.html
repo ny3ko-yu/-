@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Tourer 運動旅跑</title>
+    <style>
+        /* General body styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header section styles */
+        .header-section {
+            position: relative;
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 400px;
+            background-image: url('images/header5.jpg'); /* 改為Sports Tourer運動旅跑的圖片 */
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-overlay h2 {
+            font-size: 3rem;
+            color: white;
+            text-align: center;
+        }
+
+        /* Container and layout */
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+        }
+
+        .sidebar {
+            width: 25%;
+            padding-right: 20px;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .sidebar a:hover {
+            color: #007BFF;
+        }
+
+        .main-content {
+            width: 75%;
+            padding-left: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .main-content p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Engine form styles */
+        .engine-info, .spec-info, .dimensions-info, .fuel-info {
+            margin-top: 40px;
+        }
+
+        .engine-spec-table, .spec-table, .dimensions-table, .fuel-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .engine-spec-table th, .spec-table th, .dimensions-table th, .fuel-table th,
+        .engine-spec-table td, .spec-table td, .dimensions-table td, .fuel-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #808080;
+        }
+
+        .engine-spec-table th, .spec-table th, .dimensions-table th, .fuel-table th {
+            background-color: #f8f8f8;
+            color: #3366CC;
+            font-weight: bold;
+            font-size: 1.25rem;
+            text-align: left;
+        }
+
+        .engine-spec-table td, .spec-table td, .dimensions-table td, .fuel-table td {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* Footer and back to top button */
+        .footer {
+            margin-top: auto; /* Makes sure button stays at the bottom */
+        }
+
+        .back-to-top {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 20px;
+            text-decoration: none;
+            background-color: #f39c12;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            text-align: center;
+            width: fit-content;
+        }
+
+        .back-to-top:hover {
+            background-color: #F07800;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding-right: 0;
+                border-right: none;
+            }
+
+            .main-content {
+                width: 100%;
+                padding-left: 0;
+            }
+
+            .header-image {
+                height: 250px;
+            }
+
+            .header-overlay h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-section">
+        <div class="header-image">
+            <div class="header-overlay">
+                <h2>2024 Sports Tourer 運動旅跑</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <a href="#engine">引擎形式</a>
+            <a href="#spec">車型規格</a>
+            <a href="#dimensions">尺寸重量</a>
+            <a href="#fuel">燃油消耗</a>
+        </div>
+        <div class="main-content">
+            <h1>Sports Tourer 運動旅跑</h1>
+            <p>這款 Sports Tourer 運動旅跑車結合了長途旅行的舒適性和運動型車輛的卓越性能，適合那些喜愛遠距離旅行同時又渴望運動感駕駛的車主。</p>
+
+            <div id="engine" class="engine-info">
+                <h2>引擎形式</h2>
+                <table class="engine-spec-table">
+                    <tr>
+                        <th>引擎類型</th>
+                        <td>四缸四衝程</td>
+                    </tr>
+                    <tr>
+                        <th>排氣量</th>
+                        <td>1050cc</td>
+                    </tr>
+                    <tr>
+                        <th>最大馬力</th>
+                        <td>120 PS</td>
+                    </tr>
+                    <tr>
+                        <th>氣缸配置</th>
+                        <td>直列四缸</td>
+                    </tr>
+                    <tr>
+                        <th>燃料供應系統</th>
+                        <td>電子燃油噴射</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="spec" class="spec-info">
+                <h2>車型規格</h2>
+                <table class="spec-table">
+                    <tr>
+                        <th>車型名稱</th>
+                        <td>Sports Tourer 運動旅跑</td>
+                    </tr>
+                    <tr>
+                        <th>車架材質</th>
+                        <td>鋼合金車架</td>
+                    </tr>
+                    <tr>
+                        <th>懸掛系統</th>
+                        <td>前KYB USD, 後KYB Mono</td>
+                    </tr>
+                    <tr>
+                        <th>前輪尺寸</th>
+                        <td>17英寸</td>
+                    </tr>
+                    <tr>
+                        <th>後輪尺寸</th>
+                        <td>17英寸</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="dimensions" class="dimensions-info">
+                <h2>尺寸重量</h2>
+                <table class="dimensions-table">
+                    <tr>
+                        <th>整備重量</th>
+                        <td>220 kg</td>
+                    </tr>
+                    <tr>
+                        <th>座高</th>
+                        <td>850 mm</td>
+                    </tr>
+                    <tr>
+                        <th>車長</th>
+                        <td>2160 mm</td>
+                    </tr>
+                    <tr>
+                        <th>車寬</th>
+                        <td>820 mm</td>
+                    </tr>
+                    <tr>
+                        <th>車高</th>
+                        <td>1250 mm</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="fuel" class="fuel-info">
+                <h2>燃油消耗</h2>
+                <table class="fuel-table">
+                    <tr>
+                        <th>油箱容量</th>
+                        <td>20 L</td>
+                    </tr>
+                    <tr>
+                        <th>燃油效率</th>
+                        <td>18 km/L</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="main.html" class="back-to-top">回首頁</a>
+    </div>
+</body>
+</html>
