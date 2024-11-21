@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重型機車</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .header-section {
+            position: relative;
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 400px;
+            background-image: url('images/header.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .home-button {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 165px;
+            height: 80px;
+            background-image: url('images/home-icon.png');
+            background-size: cover;
+            background-position: center;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .home-button:hover {
+            transform: scale(1.1);
+        }
+
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sidebar {
+            width: 25%;
+            padding-right: 20px;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .popup-cart {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: none;
+            flex-direction: column;
+            padding: 20px;
+            z-index: 1000;
+            box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .popup-cart.active {
+            display: flex;
+        }
+
+        .sidebar h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 75%;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            height: 350px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #ccc;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.2em;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .product-price {
+            font-size: 1.5em;
+            color:#FF3300; 
+            margin: 10px 0;
+        }
+
+        .add-to-cart {
+            padding: 10px 20px;
+            background-color: #f39c12; /* 橘色 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .add-to-cart:hover {
+            background-color:#FF3300;         }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <div class="header-image"></div>
+        <button class="home-button" onclick="window.location.href='default.html';"></button>
+    </div>
+
+    <div class="popup-cart" id="cartPopup">
+        <h2>購物車</h2>
+        <ul id="cartItems"></ul>
+        <button onclick="checkout()">結帳</button>
+        <button class="clear-cart" onclick="clearCart()">清空購物車</button>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>重型機車</h2>
+            <ul>
+                <li><a href="item1.html">Enduro 越野系列</a></li>
+                <li><a href="item2.html">Naked 街車</a></li>
+                <li><a href="item3.html">Supermoto 滑胎車</a></li>
+                <li><a href="item4.html">SuperSport 輕仿賽車</a></li>
+                <li><a href="item5.html">Sports Tourer 運動旅跑</a></li>
+            </ul>
+        </div>
+
+        <div class="grid-container" id="productGrid">
+            <div class="grid-item" data-type="Enduro">
+                <img class="product-image" src="images/A.jpg" alt="Enduro Image"
+                     onmouseover="this.src='images/A1.jpg'" onmouseout="this.src='images/A.jpg'">
+                <div class="product-info">
+                    <h3>Enduro 越野車</h3>
+                    <div class="product-price">NT$668,000</div>
+                    <button class="add-to-cart" onclick="addToCart('500EXC-F')">加入購物車</button>
+                </div>
+            </div>
+            <div class="grid-item" data-type="Naked">
+                <img class="product-image" src="images/B.jpg" alt="Naked Image"
+                     onmouseover="this.src='images/B1.jpg'" onmouseout="this.src='images/B.jpg'">
+                <div class="product-info">
+                    <h3>Naked 街車</h3>
+                    <div class="product-price">NT$288,000</div>
+                    <button class="add-to-cart" onclick="addToCart('Duke 390')">加入購物車</button>
+                </div>
+            </div>
+            <div class="grid-item" data-type="Supermoto">
+                <img class="product-image" src="images/C.jpg" alt="Supermoto Image"
+                     onmouseover="this.src='images/C1.jpg'" onmouseout="this.src='images/C.jpg'">
+                <div class="product-info">
+                    <h3>Supermoto 滑胎車</h3>
+                    <div class="product-price">NT$728,000</div>
+                    <button class="add-to-cart" onclick="addToCart('690 SMCR')">加入購物車</button>
+                </div>
+            </div>
+            <div class="grid-item" data-type="SuperSport">
+                <img class="product-image" src="images/D.jpg" alt="SuperSport Image"
+                     onmouseover="this.src='images/D1.jpg'" onmouseout="this.src='images/D.jpg'">
+                <div class="product-info">
+                    <h3>SuperSport 輕仿賽車</h3>
+                    <div class="product-price">NT$253,000</div>
+                    <button class="add-to-cart" onclick="addToCart('RC390 GP')">加入購物車</button>
+                </div>
+            </div>
+            <div class="grid-item" data-type="Sports Tourer">
+                <img class="product-image" src="images/E.jpg" alt="Sports Tourer Image"
+                     onmouseover="this.src='images/E1.jpg'" onmouseout="this.src='images/E.jpg'">
+                <div class="product-info">
+                    <h3>Sports Tourer 運動旅跑</h3>
+                    <div class="product-price">NT$958,000</div>
+                    <button class="add-to-cart" onclick="addToCart('1290 Super Duke GT')">加入購物車</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addToCart(productName) {
+            const cartItems = document.getElementById('cartItems');
+            const li = document.createElement('li');
+            li.textContent = productName;
+            cartItems.appendChild(li);
+
+            const cartPopup = document.getElementById('cartPopup');
+            cartPopup.classList.add('active');
+        }
+
+        function checkout() {
+            alert('結帳功能尚未開放！');
+        }
+
+        function clearCart() {
+            const cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = ''; // 清空購物車內容
+            const cartPopup = document.getElementById('cartPopup');
+            cartPopup.classList.remove('active'); // 如果沒有物品，隱藏購物車
+        }
+
+        document.addEventListener('click', function(event) {
+            const cartPopup = document.getElementById('cartPopup');
+            if (!cartPopup.contains(event.target) && !event.target.matches('.add-to-cart')) {
+                cartPopup.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
