@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>十點半遊戲</title>
+
+<style type="text/css">
+.body {
+        background-color: #228B22; /* 綠色遊戲桌面背景 */
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+    }
+.pokerpic {
+	margin: 5px;
+	background-image: url('A.jpg');
+	width: 105px;
+	height: 155px;
+	float: left;
+}
+#controls {
+	margin-top: 20px;
+}
+.result {
+	font-size: 18px;
+	color: #333;
+	margin-top: 20px;
+}
+</style>
+<script>
+var listGO = 0; // 當前抽牌次數
+var wx = -55, hy = -60; // 卡牌的背景位置
+var playerCards = []; // 玩家手牌
+var playerTotal = 0; // 玩家總分
+
+// 初始化牌堆
+mypoker = new Array();
+for (var i = 0; i < 52; i++) {
+    mypoker[i] = i;
+}
+
+// 洗牌
+for (var i = 0; i < 52; i++) {
+    var R_num = Math.floor(Math.random() * 52);
+    var temp = mypoker[i];
+    mypoker[i] = mypoker[R_num];
+    mypoker[R_num] = temp;
+}
+
+// 計算卡牌位置
+function getpicWH(n) {
+    wx = -55 - (parseInt(n % 13) * 115.5);
+    hy = -60 - (parseInt(n / 13) * 218);
+}
+
+// 計算分數（J, Q, K = 0.5 分，A = 1 分，其餘按點數計分）
+function calculateScore(cardIndex) {
+    var rank = cardIndex % 13 + 1; // 1-13 對應 A-K
+    return rank > 10 ? 0.5 : rank;
+}
+
+// 顯示一張牌
+function openlistGO(showID, cardIndex) {
+    getpicWH(cardIndex);
+    document.getElementById(showID).innerHTML += 
+        "<div class='pokerpic' style='background-position:" + wx + "px " + hy + "px;'></div>";
+}
+
+// 抽牌
+function drawCard() {
+    if (listGO >= 52) {
+        alert("牌堆已空！");
+        return;
+    }
+    var card = mypoker[listGO];
+    playerCards.push(card);
+    playerTotal += calculateScore(card);
+
+    openlistGO('player', card);
+    document.getElementById('result').innerHTML = "目前得分：" + playerTotal;
+
+    listGO++;
+
+    // 爆牌檢查
+    if (playerTotal > 10.5) {
+        document.getElementById('result').innerHTML = "爆牌！你輸了！最終得分：" + playerTotal;
+        disableButtons();
+    }
+}
+
+// 停牌
+function stopGame() {
+    document.getElementById('result').innerHTML = "遊戲結束！最終得分：" + playerTotal;
+    disableButtons();
+}
+
+// 停用按鈕
+function disableButtons() {
+    document.getElementById('draw-btn').disabled = true;
+    document.getElementById('stop-btn').disabled = true;
+}
+
+</script>
+</head>
+
+<body>
+<h1>十點半遊戲</h1>
+<div id="game-area">
+    <!-- 玩家牌區 -->
+    <div id="player" style="float: none; height: 165px;"></div>
+
+    <!-- 控制按鈕 -->
+    <div id="controls">
+        <button id="draw-btn" onclick="drawCard()">抽牌</button>
+        <button id="stop-btn" onclick="stopGame()">停牌</button>
+    </div>
+
+    <!-- 遊戲結果 -->
+    <div class="result" id="result"></div>
+</div>
+</body>
+
+</html>
