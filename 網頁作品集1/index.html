@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的履歷與作品集</title>
+    <style>
+        /* Existing styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            background-color: #A7C7E7; /* 鵝黃色 */
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 1.8em;
+            color: #333;
+            border-bottom: 2px solid #A7C7E7; /* 鵝黃色 */
+            padding-bottom: 5px;
+        }
+
+        .section p, .section ul {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            margin-bottom: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .work {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* 保證上下對齊 */
+            height: 450px; /* 固定高度，保證位置一致 */
+            transition: transform 0.3s;
+        }
+
+        .work:hover {
+            transform: scale(1.05);
+        }
+
+        .work img {
+            width: 100%;
+            height: auto; /* 高度自動調整 */
+            object-fit: contain; /* 保持圖片比例 */
+            border-radius: 10px;
+        }
+
+        .work h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin-top: 10px;
+            flex-grow: 1; /* 讓標題空間可變動 */
+        }
+
+        .work a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #A7C7E7;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .work a:hover {
+            background-color: #e1d673;
+        }
+
+        .certifications ul {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+            list-style: none;
+            padding: 0;
+        }
+
+        .certifications ul li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #A7C7E7;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        .autobiography {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .autobiography img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        /* Ensure full-size display for work photos */
+        .work img {
+            width: 100%;
+            height: auto;
+            object-fit: contain; /* Keep the image proportional and visible without cropping */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>我的履歷與作品集</h1>
+    </header>
+
+    <div class="content">
+        <div class="section autobiography">
+            <img src="profile.jpg" alt="我的照片">
+            <h2>自傳</h2>
+            <p>大家好，我是宇奕蓁，目前就讀於臺中科技大學智慧生產工程系。我是一個外向且熱情的人，喜歡觀察周遭的事物並與人互動，這讓我在團隊中常常扮演帶動氣氛的角色。我喜歡在提供幫助、解決問題的過程中，獲得他人的肯定與滿足感。</p>
+            <p>在高中時期，我學習了資料彙整和程式設計，這讓我發現自己對條理性和結構化的工作充滿熱情。我擅長運用邏輯和系統化的方式來解決問題，並且對流程中可能出現的錯誤能夠迅速發現並加以改進。</p>
+            <p>我的哥哥經營機車店，從小就耳濡目染，這讓我對理工科領域產生了濃厚的興趣。觀察他拆裝機車零件，並且親自到賽車場為他加油，讓我對機械和工程產生了極大的好奇心，也讓我喜歡上了騎檔車的樂趣。</p>
+        </div>
+
+        <!-- 學歷部分 -->
+        <div class="section">
+            <h2>學歷</h2>
+            <ul>
+                <li>國立台中科技大學 智慧生產工程系四技日間就讀中（2021/9 ~ 2024/8）</li>
+            </ul>
+        </div>
+		<div class="section certifications">
+		            <h2>證照</h2>
+		            <ul>
+		                <li>TQC-OA - Excel</li>
+		                <li>TQC-OA - Word</li>
+		                <li>TQC-OA - PowerPoint</li>
+		                <li>TQC-OA - 中文輸入</li>
+		                <li>TQC-OA - 英文輸入</li>
+		                <li>EEC - ERP軟體應用 - 配銷模組</li>
+		                <li>EEC - ERP軟體應用 - 生管模組</li>
+		            </ul>
+		        </div>
+
+        <!-- 工作經驗部分 -->
+        <div class="section">
+            <h2>工作經驗</h2>
+            <div>
+                <h3>門市人員 - 香港商歌帝梵亞洲有限公司台灣分公司</h3>
+                <p>食品什貨零售業 30~100人 | 台中市東區 | 2023/6 ~ 2024/11 (1年6個月)</p>
+                <ul>
+                    <li>介紹及銷售門市商品。</li>
+                    <li>提供顧客之接待與需求服務。</li>
+                    <li>負責商品包裝、陳列及促銷品換檔工作。</li>
+                    <li>負責商品進貨入庫、庫存管理、盤點。</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>計時銷售人員 - 妮娜巧克力夢想城堡</h3>
+                <p>其他住宿服務業 100~500人 | 台中市西區 | 2021/1 ~ 2023/5 (2年5個月)</p>
+                <ul>
+                    <li>產品介紹及解說銷售。</li>
+                    <li>賣場／門市營運計畫與管理。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 作品集部分 -->
+        <div class="section">
+            <h2>作品集</h2>
+            <div class="container">
+                <div class="work">
+                    <img src="作品1.jpg" alt="作品1">
+                    <h2>作品1</h2>
+                    <a href="作品1/index.html" target="_blank">查看KTM shop1</a>
+                </div>
+
+                <div class="work">
+                    <img src="作品2.jpg" alt="作品2">
+                    <h2>作品2</h2>
+                    <a href="作品2/index.html" target="_blank">查看21點遊戲</a>
+                </div>
+                <div class="work">
+                    <img src="作品3.jpg" alt="作品3">
+                    <h2>作品3</h2>
+                    <a href="https://twmipo09857271.admin.metabiz.tw/" target="_blank">查看KTM shop2</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 得獎紀錄 -->
+        <div class="section">
+            <h2>得獎紀錄</h2>
+            <ul>
+                <li>2021: 第十二屆IIIC國際創新發明競賽 銀牌獎</li>
+                <li>2022: 烏克蘭國際發明展 金牌獎</li>
+                <li>2022: 德國紐倫堡國際發明展 銅牌獎及國際特別獎</li>
+                <li>2022: 非洲國際發明展 金牌獎</li>
+                <li>2023: 巴黎國際發明展 銅牌獎</li>
+                <li>2023: 校園創新與科技競賽 銀牌獎</li>
+                <li>2023: 烏克蘭國際發明展 金牌獎</li>
+            </ul>
+        </div>
+
+        <!-- 作品照片 -->
+        <div class="section">
+            <h2>作品照片</h2>
+            <div class="container">
+                <div class="work">
+                    <img src="2021 IIC.jpg" alt="作品照片1" class="work-photo">
+                    <h2>2021 IIC</h2>
+                </div>
+
+                <div class="work">
+                    <img src="2022 烏克蘭.jpg" alt="作品照片2" class="work-photo">
+                    <h2>2022 烏克蘭</h2>
+                </div>
+
+                <div class="work">
+                    <img src="2022紐倫堡.jpg" alt="作品照片3" class="work-photo">
+                    <h2>2022 紐倫堡</h2>
+                </div>
+
+                <div class="work">
+                    <img src="2022非洲國際發明展-金牌.jpg" alt="作品照片4" class="work-photo">
+                    <h2>2022 非洲</h2>
+                </div>
+
+                <div class="work">
+                    <img src="2023IIC.jpg" alt="作品照片5" class="work-photo">
+                    <h2>2023 IIC</h2>
+                </div>
+
+                <div class="work">
+                    <img src="2023法國.jpg" alt="作品照片6" class="work-photo">
+                    <h2>2023 法國</h2>
+                </div>
+
+                <div class="work">
+                    <img src="2023烏克蘭.jpg" alt="作品照片7" class="work-photo">
+                    <h2>2023 烏克蘭</h2>
+                </div>
+
+                <div class="work">
+                    <img src="合照.jpg" alt="作品照片8" class="work-photo">
+                    <h2>2021 IIC 合照</h2>
+                </div>
+
+                <div class="work">
+                    <img src="1.jpg" alt="作品照片9" class="work-photo">
+                    <h2>模型渲染圖 </h2>
+                </div>
+
+                <div class="work">
+                    <img src="2.jpg" alt="作品照片10" class="work-photo">
+                    <h2>模型渲染圖</h2>
+                </div>
+
+              
+                <div class="work">
+                    <img src="5.png" alt="作品照片13" class="work-photo">
+                    <h2>模型3D圖</h2>
+                </div>
+
+                <div class="work">
+                    <img src="6.png" alt="作品照片14" class="work-photo">
+                    <h2>模型3D圖</h2>
+                </div>
+            </div>
+        </div>
+				<div class="section">
+				            <h2>聯絡方式</h2>
+				            <ul>
+				                <li>電子郵件: <a href="mailto:Mipo0985@gmail.com">Mipo0985@gmail.com</a></li>
+				            </ul>
+				        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 我的履歷與作品集</p>
+    </footer>
+
+</body>
+</html>
